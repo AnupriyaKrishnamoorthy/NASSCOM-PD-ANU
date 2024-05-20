@@ -303,9 +303,9 @@ Synthesis Report
 ```
 
 ```
-Flop ratio = Number of D Flip flops = 1596  = 0.1579
+Flop ratio = Number of D Flip flops = 1613  = 0.08715 or 8.715%
              ______________________   _____
-             Total Number of cells    10104
+             Total Number of cells    18509
 ```
 
 
