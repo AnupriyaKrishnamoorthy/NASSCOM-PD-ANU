@@ -134,7 +134,7 @@ To delete all generated runs under all designs:
 So far all we did was to learn about the flow and it's working. The workshop has contents tailored to Intel based chips and also Ubuntu, since most of the softwares haven't been updated to work with Apple's Chip, we have to do some run-around. First, the workshop works based on virtualbox and virtual machine, since VirtualBox hasn't released a stable version yet, we would have to use UTM for MacOS. And the disk-image wouldn't be compatible with UTM. So you need to have the unaltered picorv32a files, which can be found in the repository [here][40]
 
 ### Installation of Ubuntu using UTM
-For the installation and use of Ubuntu as a Virtual Machine in MacOS, I followed this [video][2]. Once installed while rebooting if you do not get this [!image](<img width="434" alt="UTM_Reboot" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/da11646a-9d8d-451c-9a8e-25b35b175b0e">
+For the installation and use of Ubuntu as a Virtual Machine in MacOS, I followed this [video][2]. Once installed while rebooting if you do not get this ![image](<img width="434" alt="UTM_Reboot" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/da11646a-9d8d-451c-9a8e-25b35b175b0e">
 ) do not panic just shut down the VM and follow the next steps.
 Now you have ubuntu in a VM, the next step is to download and install openlane and docker.
 
@@ -166,7 +166,7 @@ sudo reboot
 # Check for successful installation
 sudo docker run hello-world 
 ```
-Once you run the above docker run, if you have installed it properly then the screen will appear like [!this](<img width="734" alt="Successful Docker Installation" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/7d16470d-9d77-4e0e-86ca-8133f5671442">).
+Once you run the above docker run, if you have installed it properly then the screen will appear like ![this](<img width="734" alt="Successful Docker Installation" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/7d16470d-9d77-4e0e-86ca-8133f5671442">).
 
 
 **Steps to install OpenLane, PDKs and Tools**</br>
