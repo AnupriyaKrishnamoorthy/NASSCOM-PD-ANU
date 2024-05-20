@@ -560,6 +560,28 @@ If you want to see connections between two different parts, place the cursor ove
 ![image](images/selected_inverter_magic.png)
 
 
+## Library exchange format (.lef)
+
+- The layout of a design is defined in a specific file called LEF.
+-  It includes design rules (tech LEF) and abstract information about the cells. 
+    -  ```Tech LEF``` -  Technology LEF file contains information about the Metal layer, Via Definition and DRCs.
+    -  ```Macro LEF``` -  Contains physical information of the cell such as its Size, Pin, their direction.
+ 
+## Designing standard cell and SPICE extraction in MAGIC 
+
+Inorder to know the logical functioning of the inverter, we extract the spice and then we do simulation on the spice. To extract it on spice we open TKCON window, the steps are
+
+```
+extract all
+ext2spice cthresh 0 rthresh 0
+ext2spice
+
+```
+
+The final file will be in the same folder as ~/openlane/vsdstdcelldesign/sky130_inv.spice
+
+![image](images/ext2spice_inverter)
+
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
