@@ -204,10 +204,6 @@ To view the report:
 ```
 cd /home/anupriyavsd/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_09.42.05/reports/synthesis
 vim 1-synthesis.AREA_0.stat.rpt
-```
-Synthesis Report
-=================
-
 
 63. Printing statistics.
 
@@ -302,21 +298,28 @@ Synthesis Report
 
 ```
 
+
 ```
-Flop ratio = Number of D Flip flops = 1613  = 0.0974152 or 9.74152%
+Flop ratio = Number of D Flip flops = 1596  = 0.1579
              ______________________   _____
-             Total Number of cells    16558
+             Total Number of cells    10104
 ```
+
+
 ## Day - 2 Good Floorplan Vs Bad Floorplan and Introduction to Libraryt Cells
 ### Utilization factor and Aspect ratio
+
 ![Core and Die section of a Chip](images/Core_and_Die.png)
 ![Utilization Factor](images/Utilization_Factor.png)
+
 
 ```
 Utilization Factor = Area occupied by netlist
                      -------------------------
                       Total area of the core 
 ```
+
+
 ```
 Aspect Ratio = Height of Core
               ----------------
