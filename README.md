@@ -134,7 +134,11 @@ To delete all generated runs under all designs:
 So far all we did was to learn about the flow and it's working. The workshop has contents tailored to Intel based chips and also Ubuntu, since most of the softwares haven't been updated to work with Apple's Chip, we have to do some run-around. First, the workshop works based on virtualbox and virtual machine, since VirtualBox hasn't released a stable version yet, we would have to use UTM for MacOS. And the disk-image wouldn't be compatible with UTM. So you need to have the unaltered picorv32a files, which can be found in the repository [here][40]
 
 ### Installation of Ubuntu using UTM
-For the installation and use of Ubuntu as a Virtual Machine in MacOS, I followed this [video][2]. Once installed while rebooting if you do not get this ![image](images/UTM_Reboot.png) do not panic just shut down the VM and follow the next steps.
+For the installation and use of Ubuntu as a Virtual Machine in MacOS, I followed this [video][2]. Once installed while rebooting if you do not get this 
+
+![image](images/UTM_Reboot.png) 
+
+do not panic just shut down the VM and follow the next steps.
 Now you have ubuntu in a VM, the next step is to download and install openlane and docker.
 
 ### OpenLane Installation
@@ -165,7 +169,9 @@ sudo reboot
 # Check for successful installation
 sudo docker run hello-world 
 ```
-Once you run the above docker run, if you have installed it properly then the screen will appear like ![this](images/Successful Docker Installation.png)
+Once you run the above docker run, if you have installed it properly then the screen will appear like this.
+
+![this](images/Successful Docker Installation.png)
 
 
 **Steps to install OpenLane, PDKs and Tools**</br>
@@ -310,6 +316,7 @@ Flop ratio = Number of D Flip flops = 1613  = 0.097415 or 9.7415%
 ### Utilization factor and Aspect ratio
 
 ![Core and Die section of a Chip](images/Core_and_Die.png)
+
 ![Utilization Factor](images/Utilization_Factor.png)
 
 
@@ -354,6 +361,7 @@ run_floorplan
 In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP_IO_VMETAL, however, this was for the old openlane and in the new version it is changed as HLAYER and VLAYER. You can learn all about it [here][3]
 
 Once you run the floorplan you will get the result like this in your interactive flow.
+
 ![this](images/run_floorplan.png) 
 
 
@@ -366,6 +374,7 @@ magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read
 
 ```
 Upon running this and viewing it in magic will give the following image.
+
 ![image](images/run_floorplan_view_magic.png)
 
 Once you are in the magic layout, we can zoom in and zoom out and select the layers. The view of that would be like this following ![picture](images/floorplan_sel_what_cmd.png)
@@ -375,6 +384,7 @@ To perform placemnet
 ```
 run_placement
 ```
+
 ![placement](images/run_placement.png)
 
 To view the floorplan in magic :
@@ -386,6 +396,7 @@ magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read
 
 ```
 Upon running this and viewing it in magic will give the following image.
+
 ![image](images/run_placement_view_magic.png)
 
 ### CELL DESIGN AND CHARACETRIZATION FLOWS
@@ -408,8 +419,10 @@ A typical standard cell characterization flow that is followed in the industry i
 7. Provide neccesary output capacitance loads
 8. Provide neccesary simulation commands
 
-Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA.![GUNA](images/GUNA.png) This software generates timing, noise, power models.
-These .libs are classified as Timing characterization, power characterization and noise characterization.
+Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA. This software generates timing, noise, power models. These .libs are classified as Timing characterization, power characterization and noise characterization.
+
+![GUNA](images/GUNA.png) 
+
 
 
 ### TIMING CHARACTERIZATION
@@ -451,6 +464,7 @@ Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 In physical design, the switching threshold Vm is like a critical voltage level for a component called a CMOS inverter. It's the point at which this inverter switches between sending out a "0" or a "1" in a computer chip. This Vm is super important because it decides how well the CMOS inverter works. Now, when we want to see how this CMOS inverter behaves, we do two types of tests. First, we have the static test, where we check how it acts when everything's stable. We look at things like how fast it can send a signal, how much power it uses, and how safe it is against errors. Then, there's the dynamic test, where we see what happens when it's switching on and off. This helps us figure out how quickly it can change from "0" to "1" and back, how strong the signals are, and if there are any weird issues like sudden changes or stuck states. Both these tests are crucial in making sure CMOS inverters work well in computer chips. They help us make sure the chip does its job correctly and efficiently.
 
 ![CMOS_Inv](images/CMOS_Inverter_Robustness.png)
+
 
 ### Steps to view Inverter Layout by VLSI System Design
 
