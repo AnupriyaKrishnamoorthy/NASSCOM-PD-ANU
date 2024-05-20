@@ -380,6 +380,65 @@ To view the floorplan in magic :
 magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
 
 ```
+Upon running this and viewing it in magic will give the following ![image](images/run_placement_view_magic.png)
+
+### CELL DESIGN AND CHARACETRIZATION FLOWS
+
+Library is a place where we get information about every cell. It has differents cells with different size, functionality,threshold voltages. There is a typical cell design flow steps.
+1. Inputs : PDKS(process design kit) : DRC & LVS, SPICE Models, library & user-defined specs.
+2. Design Steps :Circuit design, Layout design (Art of layout Euler's path and stick diagram), Extraction of parasitics, Characterization (timing, noise, power).
+3. Outputs: CDL (circuit description language), LEF, GDSII, extracted SPICE netlist (.cir), timing, noise and power .lib files
+
+### Standard Cell Characterization Flow
+
+A typical standard cell characterization flow that is followed in the industry includes the following steps:
+
+1. Read in the models and tech files
+2. Read extracted spice Netlist
+3. Recognise behavior of the cells
+4. Read the subcircuits
+5. Attach power sources
+6. Apply stimulus to characterization setup
+7. Provide neccesary output capacitance loads
+8. Provide neccesary simulation commands
+
+Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA.![GUNA]() This software generates timing, noise, power models.
+These .libs are classified as Timing characterization, power characterization and noise characterization.
+
+
+### TIMING CHARACTERIZATION
+
+In standard cell characterisation, One of the classification of libs is timing characterisation.
+
+#### Timing threshold definitions 
+Timing defintion |	Value
+-------------- | --------------
+slew_low_rise_thr	| 20% value
+slew_high_rise_thr | 80% value
+slew_low_fall_thr |	20% value
+slew_high_fall_thr |	80% value
+in_rise_thr	| 50% value
+in_fall_thr |	50% value
+out_rise_thr |	50% value
+out_fall_thr | 50% value
+
+#### Propagation Delay and Transition Time 
+
+**Propagation Delay** 
+The time difference between when the transitional input reaches 50% of its final value and when the output reaches 50% of its final value. Poor choice of threshold values lead to negative delay values. Even thought you have taken good threshold values, sometimes depending upon how good or bad the slew, the dealy might be still +ve or -ve.
+
+```
+Propagation delay = time(out_thr) - time(in_thr)
+```
+**Transition Time**
+
+The time it takes the signal to move between states is the transition time , where the time is measured between 10% and 90% or 20% to 80% of the signal levels.
+
+```
+Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
+
+Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
+```
 
 
 [1]: ../for_developers/docker.md
