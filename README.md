@@ -355,14 +355,32 @@ In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP
 
 Once you run the floorplan you will get the result like ![this](images/run_floorplan.png) in your interactive flow.
 
-To view the placement in magic :
+To view the floorplan in magic :
 
 ```
 /home/anupriyavsd/vsdflow/openlane_working_dir/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_16.47.36/results/floorplan
 magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
 
 ```
-Upon running this and viewing it in magic will give the following ![image]
+Upon running this and viewing it in magic will give the following ![image](images/run_floorplan_view_magic.png)
+
+Once you are in the magic layout, we can zoom in and zoom out and select the layers. The view of that would be like this following ![picture](images/floorplan_sel_what_cmd.png)
+
+**Placement**</br>
+To perform placemnet 
+```
+run_placement
+```
+![placement](images/run_placement.png)
+
+To view the floorplan in magic :
+
+```
+/home/anupriyavsd/vsdflow/openlane_working_dir/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_16.47.36/results/placement
+magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
+
+```
+
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
