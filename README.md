@@ -477,6 +477,7 @@ SPICE Deck provides information about the following:
 - Simulation commands
 - Model file - information of parameters related to transistors
 Simulation of CMOS using different width and lengths. From the waveform, irrespective of switching the shape of it are almost the same.
+![image](images/SPICE_Deck.png)
 
 ### Switching Threshold (Vm)
 
@@ -487,7 +488,7 @@ In physical design, the switching threshold Vm is like a critical voltage level 
 Through transient analysis, we calculate the rise and fall delays of the CMOS by SPICE Simulation. As we know delays are calculated at 50% of the final values.
 
 
-## Lab steps to git clone vsdstdcelldesign
+## Steps to clone and view Inverter Layout by VLSI System Design
 
 First, clone the required mag files and spicemodels of inverter,pmos and nmos sky130.
 ```
@@ -510,6 +511,42 @@ Upon running that command we would be able to see the ```CMOS Inverter``` in mag
 
 ![inverter_magic](images/Inverter-magic.png)
 
+
+### Summary N-Well Process
+The 16-mask CMOS design fabrication process involves several steps to create integrated circuits. Here is a brief description of each step:
+
+1. Substrate Preparation: The process begins with preparing a silicon wafer, which serves as the substrate for the integrated circuit.
+
+2. N-Well Formation: The N-well regions are created on the substrate by introducing impurities, typically phosphorus, through ion implantation or diffusion.
+
+3. P-Well Formation: Similar to the N-well formation, P-well regions are created using ion implantation or diffusion with boron or other suitable dopants.
+
+4. Gate Oxide Deposition: A thin layer of silicon dioxide is deposited on the substrate, forming the gate oxide.
+
+5. Poly-Silicon Deposition: A layer of polysilicon is deposited on the gate oxide layer, which will later serve as the gate electrode.
+
+6. Poly-Silicon Masking and Etching: A photoresist mask is applied to define the areas where the poly-silicon layer needs to be preserved, and then etching is performed to remove the exposed portions.
+
+7. N-Well Masking and Implantation: A photoresist mask is used to define the areas where the N-well regions should be preserved. Phosphorus or other suitable impurities are then implanted into the exposed regions.
+
+8. P-Well Masking and Implantation: Similarly, a photoresist mask is used to define the areas where the P-well regions should be preserved. Boron or other suitable impurities are implanted into the exposed regions.
+
+9. Source/Drain Implantation: The areas for source and drain regions are defined using a photoresist mask, and dopants (e.g., arsenic or phosphorus for NMOS, boron or BF2 for PMOS) are implanted into the exposed regions.
+
+10. Gate Formation: The gate electrode is defined by etching the poly-silicon layer using a photoresist mask.
+
+11. Source/Drain Masking and Etching: A photoresist mask is applied to define the source and drain regions, and etching is performed to remove the oxide layer in those areas.
+
+12. Contact/Via Formation: Contact holes or vias are etched through the oxide layer to expose the underlying regions, such as the source/drain regions or poly-silicon gates.
+
+13. Metal Deposition: A layer of metal, typically aluminum or copper, is deposited on the wafer surface to form the interconnects.
+
+14. Metal Masking and Etching: A photoresist mask is used to define the metal interconnects, and etching is performed to remove the exposed metal, leaving behind the desired interconnect patterns.
+
+15. Passivation Layer Deposition: A protective layer, often made of silicon dioxide or nitride, is deposited to isolate and shield the metal interconnects.
+
+16. Final Testing and Packaging: The fabricated wafer undergoes rigorous testing to ensure the functionality of the integrated circuits. The working chips are then separated, packaged, and prepared for use in various electronic devices.
+Each of these steps plays a crucial role in the fabrication process, contributing to the successful creation of CMOS integrated circuits with 16 masks.
 
 
 
