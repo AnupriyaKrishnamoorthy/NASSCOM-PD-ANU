@@ -548,6 +548,17 @@ The 16-mask CMOS design fabrication process involves several steps to create int
 16. Final Testing and Packaging: The fabricated wafer undergoes rigorous testing to ensure the functionality of the integrated circuits. The working chips are then separated, packaged, and prepared for use in various electronic devices.
 Each of these steps plays a crucial role in the fabrication process, contributing to the successful creation of CMOS integrated circuits with 16 masks.
 
+![image](images/16_step-mask.png)
+
+## SKY130 basic layer layout and LEF using inverter
+
+- From Layout, we see the layers which are required for CMOS inverter. Inverter is, PMOS and NMOS connected together.
+- Gates of both PMOS and NMOS are connected together and fed to input(here ,A), NMOS source connected to ground(here, VGND), PMOS source is connected to VDD(here, VPWR), Drains of PMOS and NMOS are connected together and fed to output(here, Y). 
+The First layer in skywater130 is ``localinterconnect layer(locali)`` , above that metal 1 is purple color and metal 2 is pink color.
+If you want to see connections between two different parts, place the cursor over that area and press S one time. The tkcon window gives the component name.
+
+![image](images/selected_inverter_magic.png)
+
 
 
 [1]: ../for_developers/docker.md
