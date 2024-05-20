@@ -26,6 +26,7 @@ All the software applications we use in our daily lives rely on hardware to run.
 
 ### Simplified RTL to GDSII flow 
 The RTL to GDSII flow basically involves :
+![openlane-flow](https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/5ed1ba9c-cca6-4159-b63c-d5514c279d1b)
 1. **RTL Design** -  The process begins with the RTL design phase, where the digital circuit is described using a hardware description language (HDL) like VHDL or Verilog. The RTL description captures the functional behavior of the circuit, specifying its logic and data paths.
 
 2. **RTL Synthesis** - RTL synthesis converts the high-level RTL description into a gate-level netlist. This stage involves mapping the RTL code to a library of standard cells (pre-designed logic elements) and optimizing the resulting gate-level representation for area, power, and timing. The output of RTL synthesis is typically in a format called the gate-level netlist.
