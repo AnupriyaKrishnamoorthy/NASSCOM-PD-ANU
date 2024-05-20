@@ -311,6 +311,7 @@ Flop ratio = Number of D Flip flops = 1613  = 0.0974152 or 9.74152%
 ### Utilization factor and Aspect ratio
 ![Core and Die section of a Chip](images/Core_and_Die.png)
 ![Utilization Factor](images/Utilization_Factor.png)
+
 ```
 Utilization Factor = Area occupied by netlist
                      -------------------------
@@ -344,10 +345,13 @@ Pin placement in physical design is all about how and where we put the input/out
 ### Steps to perform Floorplanning and Placement
 **Floorplanning**</br>
 To perform floor planning
+
 ```
 run_floorplanning
 ```
+
 In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP_IO_VMETAL, however, this was for the old openlane and in the new version it is changed as HLAYER and VLAYER. You can learn all about it [here][3]
+
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
