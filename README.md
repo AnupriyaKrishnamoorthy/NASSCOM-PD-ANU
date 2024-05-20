@@ -62,3 +62,70 @@ OpenLane integrated several key open source tools over the execution stages:
 12. Antenna Checks: Magic
 13. Circuit Validity Checker: CVC
 
+Everything in Floorplanning through Routing is done using OpenROAD and its various sub-utilities.
+
+## OpenLane Output
+
+All output run data is placed by default under ./designs/design_name/runs. Each flow cycle will output a timestamp-marked folder containing the following file structure:
+
+```
+<design_name>
+├── config.json/config.tcl
+├── runs
+│   ├── <tag>
+│   │   ├── config.tcl
+│   │   ├── {logs, reports, tmp}
+│   │   │   ├── cts
+│   │   │   ├── signoff
+│   │   │   ├── floorplan
+│   │   │   ├── placement
+│   │   │   ├── routing
+│   │   │   └── synthesis
+│   │   ├── results
+│   │   │   ├── final
+│   │   │   ├── cts
+│   │   │   ├── signoff
+│   │   │   ├── floorplan
+│   │   │   ├── placement
+│   │   │   ├── routing
+│   │   │   └── synthesis
+```
+
+To delete all generated runs under all designs:
+`make clean_runs`
+
+[1]: ../for_developers/docker.md
+[4]: https://github.com/YosysHQ/yosys
+[5]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/ifp
+[6]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/ppl
+[7]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/tap
+[8]: https://github.com/The-OpenROAD-Project/OpenSTA
+[9]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/replace
+[10]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/dpl
+[11]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/cts
+[12]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/grt
+[13]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/TritonRoute
+[14]: https://github.com/RTimothyEdwards/magic
+[15]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/rsz
+[16]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/pdn
+[18]: https://github.com/RTimothyEdwards/qflow/blob/master/src/addspacers.c
+[19]: https://github.com/The-OpenROAD-Project/
+[20]: https://github.com/git-lfs/git-lfs/wiki/Installation
+[21]: /usage/exploration_script.md
+[22]: https://github.com/RTimothyEdwards/netgen
+[24]: ./for_developers/pdk_structure.md
+[25]: ./reference/interactive_mode.md
+[26]: ./usage/chip_integration.md
+[27]: https://github.com/AUCOHL/spef-extractor
+[28]: https://github.com/scale-lab/OpenPhySyn
+[29]: ./usage/hardening_macros.md
+[30]: ./usage/building_the_pdk.md
+[31]: https://github.com/d-m-bailey/cvc
+[32]: ./for_developers/code_contribution.md
+[33]: ./authors.md
+[34]: ./reference/openlane_commands.md
+[35]: https://github.com/KLayout/klayout
+[36]: https://github.com/cuhk-eda/cu-gr
+[37]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/rcx
+[38]: ./for_developers/issue_regression_tests.md
+[39]: https://github.com/cuhk-eda/dr-cu
