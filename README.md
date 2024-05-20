@@ -131,9 +131,86 @@ To delete all generated runs under all designs:
 `make clean_runs`
 
 ## Installation for MacOS (Apple Chip M1,M2,M3)
-So far all we did was to learn about the flow and it's working. The workshop has contents tailored to Intel based chips and also Ubuntu, since most of the softwares haven't been updated to work with Apple's Chip, we have to do some run-around. First, the workshop works based on virtualbox and virtual machine, since VirtualBox hasn't released a stable version yet, we would have to use UTM for MacOS. And the disk-image wouldn't be compatible with UTM. So you need to have the unaltered picorv32a files. which can be found in the repository here
+So far all we did was to learn about the flow and it's working. The workshop has contents tailored to Intel based chips and also Ubuntu, since most of the softwares haven't been updated to work with Apple's Chip, we have to do some run-around. First, the workshop works based on virtualbox and virtual machine, since VirtualBox hasn't released a stable version yet, we would have to use UTM for MacOS. And the disk-image wouldn't be compatible with UTM. So you need to have the unaltered picorv32a files, which can be found in the repository [here][40]
+
+### Installation of Ubuntu using UTM
+For the installation and use of Ubuntu as a Virtual Machine in MacOS, I followed this [video][2]. Once installed while rebooting if you do not get this ![image](<img width="434" alt="UTM_Reboot" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/da11646a-9d8d-451c-9a8e-25b35b175b0e">
+) do not panic just shut down the VM and follow the next steps.
+Now you have ubuntu in a VM, the next step is to download and install openlane and docker.
+
+### OpenLane Installation
+Prior to the installation of the OpenLane install the dependencies and packages using the command shown below :</br>
+``` 
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install -y build-essential python3 python3-venv python3-pip make git
+
+Docker Installation for Openlane
+```
+Docker Installation :</br>
+```
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io
+sudo docker run hello-world
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo reboot 
+
+
+# Check for successful installation
+sudo docker run hello-world 
+```
+Once you run the above docker run, if you have installed it properly then the screen will appear like ![this](<img width="734" alt="Successful Docker Installation" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/7d16470d-9d77-4e0e-86ca-8133f5671442">).
+
+
+**Steps to install OpenLane, PDKs and Tools**</br>
+```
+cd $HOME
+git clone https://github.com/The-OpenROAD-Project/OpenLane --recurse-submodules 
+cd OpenLane
+make
+make test
+cd /home/anupriyavsd/OpenLane/designs/ci
+cp -r * ../
+```
+After a successful ```make``` when you run ```make test``` you will have a ```Basic test passed``` on your terminal. At this step when openlane is running, include the [picorv32a][40]
+In order to start open lane and run synthesis we would follow the next steps.
+
+### Steps to run synthesis in OpenLane Interactive mode:
+
+
+```
+cd ~/OpenLane
+make mount
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+run_synthesis
+```
+
+To view nelist
+```
+cd /home/anupriyavsd/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_09.42.05/results/synthesis
+vim picorv32a.v
+```
+![synthesis](<img width="1360" alt="Synthesis_results_picorv32a_verilog" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/243e3857-b67a-4612-95e2-2b8a7fa087d3">)
+
+To view the report:
+```
+cd /home/anupriyavsd/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_09.42.05/reports/synthesis
+vim 1-synthesis.AREA_0.stat.rpt
+```
+![report](<img width="582" alt="Synthessis_Area0_report" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/35f93841-ec02-4f43-8ec6-76b452b605a3">
+)
 
 [1]: ../for_developers/docker.md
+[2]: https://www.youtube.com/watch?v=MVLbb1aMk24
 [4]: https://github.com/YosysHQ/yosys
 [5]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/ifp
 [6]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/ppl
@@ -168,3 +245,4 @@ So far all we did was to learn about the flow and it's working. The workshop has
 [37]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/rcx
 [38]: ./for_developers/issue_regression_tests.md
 [39]: https://github.com/cuhk-eda/dr-cu
+[40]: https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/tree/65f03d525c953fc0513856928e923acfec3de57b/picorv32a
