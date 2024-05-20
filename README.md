@@ -300,13 +300,13 @@ vim 1-synthesis.AREA_0.stat.rpt
 
 
 ```
-Flop ratio = Number of D Flip flops = 1596  = 0.1579
+Flop ratio = Number of D Flip flops = 1613  = 0.097415 or 9.7415%
              ______________________   _____
-             Total Number of cells    10104
+             Total Number of cells    16558
 ```
 
 
-## Day - 2 Good Floorplan Vs Bad Floorplan and Introduction to Libraryt Cells
+## Day - 2 Good Floorplan Vs Bad Floorplan and Introduction to Library Cells
 ### Utilization factor and Aspect ratio
 
 ![Core and Die section of a Chip](images/Core_and_Die.png)
@@ -355,6 +355,7 @@ run_floorplanning
 
 In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP_IO_VMETAL, however, this was for the old openlane and in the new version it is changed as HLAYER and VLAYER. You can learn all about it [here][3]
 
+Once you run the floorplan you will get the result like ![this]
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
