@@ -353,16 +353,20 @@ run_floorplan
 
 In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP_IO_VMETAL, however, this was for the old openlane and in the new version it is changed as HLAYER and VLAYER. You can learn all about it [here][3]
 
-Once you run the floorplan you will get the result like ![this](images/run_floorplan.png) in your interactive flow.
+Once you run the floorplan you will get the result like this in your interactive flow.
+![this](images/run_floorplan.png) 
+
 
 To view the floorplan in magic :
 
 ```
 /home/anupriyavsd/vsdflow/openlane_working_dir/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_16.47.36/results/floorplan
+
 magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
 
 ```
-Upon running this and viewing it in magic will give the following ![image](images/run_floorplan_view_magic.png)
+Upon running this and viewing it in magic will give the following image.
+![image](images/run_floorplan_view_magic.png)
 
 Once you are in the magic layout, we can zoom in and zoom out and select the layers. The view of that would be like this following ![picture](images/floorplan_sel_what_cmd.png)
 
@@ -377,10 +381,12 @@ To view the floorplan in magic :
 
 ```
 /home/anupriyavsd/vsdflow/openlane_working_dir/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_16.47.36/results/placement
+
 magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
 
 ```
-Upon running this and viewing it in magic will give the following ![image](images/run_placement_view_magic.png)
+Upon running this and viewing it in magic will give the following image.
+![image](images/run_placement_view_magic.png)
 
 ### CELL DESIGN AND CHARACETRIZATION FLOWS
 
@@ -439,6 +445,12 @@ Rise transition time = time(slew_high_rise_thr) - time (slew_low_rise_thr)
 
 Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 ```
+
+## Day -3 Design Library Cell using magic layout and ngspice charcterization
+### Switching Threshold (Vm)
+In physical design, the switching threshold Vm is like a critical voltage level for a component called a CMOS inverter. It's the point at which this inverter switches between sending out a "0" or a "1" in a computer chip. This Vm is super important because it decides how well the CMOS inverter works. Now, when we want to see how this CMOS inverter behaves, we do two types of tests. First, we have the static test, where we check how it acts when everything's stable. We look at things like how fast it can send a signal, how much power it uses, and how safe it is against errors. Then, there's the dynamic test, where we see what happens when it's switching on and off. This helps us figure out how quickly it can change from "0" to "1" and back, how strong the signals are, and if there are any weird issues like sudden changes or stuck states. Both these tests are crucial in making sure CMOS inverters work well in computer chips. They help us make sure the chip does its job correctly and efficiently.
+
+![CMOS_Inv]()
 
 
 [1]: ../for_developers/docker.md
