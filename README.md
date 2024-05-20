@@ -26,7 +26,6 @@ All the software applications we use in our daily lives rely on hardware to run.
 
 ### Simplified RTL to GDSII flow 
 The RTL to GDSII flow basically involves :
-![openlane-flow](https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/5ed1ba9c-cca6-4159-b63c-d5514c279d1b)
 1. **RTL Design** -  The process begins with the RTL design phase, where the digital circuit is described using a hardware description language (HDL) like VHDL or Verilog. The RTL description captures the functional behavior of the circuit, specifying its logic and data paths.
 
 2. **RTL Synthesis** - RTL synthesis converts the high-level RTL description into a gate-level netlist. This stage involves mapping the RTL code to a library of standard cells (pre-designed logic elements) and optimizing the resulting gate-level representation for area, power, and timing. The output of RTL synthesis is typically in a format called the gate-level netlist.
@@ -47,22 +46,59 @@ The RTL to GDSII flow basically involves :
 OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, KLayout and a number of custom scripts for design exploration and optimization. It also provides a number of custom scripts for design exploration and optimization. The flow performs all ASIC implementation steps from RTL all the way down to GDSII. Currently, it supports both A and B variants of the sky130 PDK, the C variant of the gf180mcu PDK, and instructions to add support for other (including proprietary) PDKs are documented. The whole documentation can be found here [https://github.com/The-OpenROAD-Project/OpenLane].
 OpenLane abstracts the underlying open source utilities, and allows users to configure all their behavior with just a single configuration file.
 
-OpenLane integrated several key open source tools over the execution stages:
-1. RTL Synthesis, Technology Mapping, and Formal Verification : yosys + abc
-2. Static Timing Analysis: OpenSTA
-3. Floor Planning: init_fp, ioPlacer, pdn and tapcell
-4. Placement: RePLace (Global), Resizer and OpenPhySyn (formerly), and OpenDP (Detailed)
-5. Clock Tree Synthesis: TritonCTS
-6. Fill Insertion: OpenDP/filler_placement
-7. Routing: FastRoute or CU-GR (formerly) and TritonRoute (Detailed) or DR-CU
-8. SPEF Extraction: OpenRCX or SPEF-Extractor (formerly)
-9. GDSII Streaming out: Magic and KLayout
-10. DRC Checks: Magic and KLayout
-11. LVS check: Netgen
-12. Antenna Checks: Magic
-13. Circuit Validity Checker: CVC
 
-Everything in Floorplanning through Routing is done using OpenROAD and its various sub-utilities.
+# OpenLane Architecture
+
+![A diagram showing the general stages of the OpenLane flow as a series of blocks](../_static/flow_v1.png)
+
+
+## OpenLane Design Stages
+
+OpenLane flow consists of several stages. By default all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLane can also be run interactively as shown [here][25].
+
+1. **Synthesis**
+    1. `yosys/abc` - Perform RTL synthesis and technology mapping.
+    2. `OpenSTA` - Performs static timing analysis on the resulting netlist to generate timing reports
+2. **Floorplaning**
+    1. `init_fp` - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+    2. `ioplacer` - Places the macro input and output ports
+    3. `pdngen` - Generates the power distribution network
+    4. `tapcell` - Inserts welltap and decap cells in the floorplan
+3. **Placement**
+    1. `RePLace` - Performs global placement
+    2. `Resizer` - Performs optional optimizations on the design
+    3. `OpenDP` - Performs detailed placement to legalize the globally placed components
+4. **CTS**
+    1. `TritonCTS` - Synthesizes the clock distribution network (the clock tree)
+5. **Routing**
+    1. `FastRoute` - Performs global routing to generate a guide file for the detailed router
+    2. `TritonRoute` - Performs detailed routing
+    3. `OpenRCX` - Performs SPEF extraction
+6. **Tapeout**
+    1. `Magic` - Streams out the final GDSII layout file from the routed def
+    2. `KLayout` - Streams out the final GDSII layout file from the routed def as a back-up
+7. **Signoff**
+    1. `Magic` - Performs DRC Checks & Antenna Checks
+    2. `KLayout` - Performs DRC Checks
+    3. `Netgen` - Performs LVS Checks
+    4. `CVC` - Performs Circuit Validity Checks
+
+OpenLane integrated several key open source tools over the execution stages:
+- RTL Synthesis, Technology Mapping, and Formal Verification : [yosys + abc][4]
+- Static Timing Analysis: [OpenSTA][8]
+- Floor Planning: [init_fp][5], [ioPlacer][6], [pdn][16] and [tapcell][7]
+- Placement: [RePLace][9] (Global), [Resizer][15] and [OpenPhySyn][28] (formerly), and [OpenDP][10] (Detailed)
+- Clock Tree Synthesis: [TritonCTS][11]
+- Fill Insertion: [OpenDP/filler_placement][10]
+- Routing: [FastRoute][12] or [CU-GR][36] (formerly) and [TritonRoute][13] (Detailed) or [DR-CU][36]
+- SPEF Extraction: [OpenRCX][37] or [SPEF-Extractor][27] (formerly)
+- GDSII Streaming out: [Magic][14] and [KLayout][35]
+- DRC Checks: [Magic][14] and [KLayout][35]
+- LVS check: [Netgen][22]
+- Antenna Checks: [Magic][14]
+- Circuit Validity Checker: [CVC][31]
+
+> Everything in Floorplanning through Routing is done using [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) and its various sub-utilities.
 
 ## OpenLane Output
 
