@@ -450,7 +450,17 @@ Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 ### Switching Threshold (Vm)
 In physical design, the switching threshold Vm is like a critical voltage level for a component called a CMOS inverter. It's the point at which this inverter switches between sending out a "0" or a "1" in a computer chip. This Vm is super important because it decides how well the CMOS inverter works. Now, when we want to see how this CMOS inverter behaves, we do two types of tests. First, we have the static test, where we check how it acts when everything's stable. We look at things like how fast it can send a signal, how much power it uses, and how safe it is against errors. Then, there's the dynamic test, where we see what happens when it's switching on and off. This helps us figure out how quickly it can change from "0" to "1" and back, how strong the signals are, and if there are any weird issues like sudden changes or stuck states. Both these tests are crucial in making sure CMOS inverters work well in computer chips. They help us make sure the chip does its job correctly and efficiently.
 
-![CMOS_Inv]()
+![CMOS_Inv](images/CMOS_Inverter_Robustness.png)
+
+### Steps to view Inverter Layout by VLSI System Design
+
+```
+git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
+To view the layout of the inverter in magic :
+```
+magic -T ./libs/sky130A.tech sky130_inv.mag &
+```
 
 
 [1]: ../for_developers/docker.md
