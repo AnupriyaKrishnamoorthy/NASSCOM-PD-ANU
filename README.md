@@ -345,7 +345,7 @@ Pin placement in physical design is all about how and where we put the input/out
 
 ### Steps to perform Floorplanning and Placement
 **Floorplanning**</br>
-To perform floor planning
+To perform floorplanning
 
 ```
 run_floorplan
@@ -353,8 +353,16 @@ run_floorplan
 
 In the workshop they were mentioning about how to change the FP_IO_HMETAL and FP_IO_VMETAL, however, this was for the old openlane and in the new version it is changed as HLAYER and VLAYER. You can learn all about it [here][3]
 
-Once you run the floorplan you will get the result like ![this](images/run_floorplan.png).
+Once you run the floorplan you will get the result like ![this](images/run_floorplan.png) in your interactive flow.
 
+To view the placement in magic :
+
+```
+/home/anupriyavsd/vsdflow/openlane_working_dir/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_16.47.36/results/floorplan
+magic -T /home/anupriyavsd/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32a.def &
+
+```
+Upon running this and viewing it in magic will give the following ![image]
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
