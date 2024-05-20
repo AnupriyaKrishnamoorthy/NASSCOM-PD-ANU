@@ -54,7 +54,7 @@ OpenLane abstracts the underlying open source utilities, and allows users to con
 
 ## OpenLane Design Stages
 
-OpenLane flow consists of several stages. By default all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLane can also be run interactively as shown [here][https://github.com/The-OpenROAD-Project/OpenLane/blob/master/docs/source/reference/interactive_mode.md].
+OpenLane flow consists of several stages. By default all flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLane can also be run interactively as shown [here][25].
 
 1. **Synthesis**
     1. `yosys/abc` - Perform RTL synthesis and technology mapping.
@@ -150,7 +150,7 @@ To delete all generated runs under all designs:
 [21]: /usage/exploration_script.md
 [22]: https://github.com/RTimothyEdwards/netgen
 [24]: ./for_developers/pdk_structure.md
-[25]: ./reference/interactive_mode.md
+[25]: https://github.com/The-OpenROAD-Project/OpenLane/blob/master/docs/source/reference/interactive_mode.md
 [26]: ./usage/chip_integration.md
 [27]: https://github.com/AUCOHL/spef-extractor
 [28]: https://github.com/scale-lab/OpenPhySyn
