@@ -166,7 +166,7 @@ sudo reboot
 # Check for successful installation
 sudo docker run hello-world 
 ```
-Once you run the above docker run, if you have installed it properly then the screen will appear like [this](<img width="734" alt="Successful Docker Installation" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/7d16470d-9d77-4e0e-86ca-8133f5671442">).
+Once you run the above docker run, if you have installed it properly then the screen will appear like [!this](<img width="734" alt="Successful Docker Installation" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/7d16470d-9d77-4e0e-86ca-8133f5671442">).
 
 
 **Steps to install OpenLane, PDKs and Tools**</br>
