@@ -130,6 +130,9 @@ All output run data is placed by default under ./designs/design_name/runs. Each 
 To delete all generated runs under all designs:
 `make clean_runs`
 
+## Installation for MacOS (Apple Chip M1,M2,M3)
+So far all we did was to learn about the flow and it's working. The workshop has contents tailored to Intel based chips and also Ubuntu, since most of the softwares haven't been updated to work with Apple's Chip, we have to do some run-around. First, the workshop works based on virtualbox and virtual machine, since VirtualBox hasn't released a stable version yet, we would have to use UTM for MacOS. And the disk-image wouldn't be compatible with UTM. So you need to have the unaltered picorv32a files. which can be found in the repository here
+
 [1]: ../for_developers/docker.md
 [4]: https://github.com/YosysHQ/yosys
 [5]: https://github.com/The-OpenROAD-Project/OpenROAD/tree/master/src/ifp
