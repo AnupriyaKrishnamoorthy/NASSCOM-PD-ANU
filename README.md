@@ -460,21 +460,57 @@ Low transition time = time(slew_high_fall_thr) - time (slew_low_fall_thr)
 ```
 
 ## Day -3 Design Library Cell using magic layout and ngspice charcterization
+
+
+
+### IO Placer revision
+
+ - PnR is a iterative flow and hence, we can make changes to the environment variables in the fly to observe the changes in our design. 
+
+## SPICE Deck Creation and Simulation for CMOS inverter
+
+-Before performing a SPICE simulation we need to create SPICE Deck
+SPICE Deck provides information about the following:
+- Component connectivity - Connectivity of the Vdd, Vss,Vin, substrate. Substrate tunes the threshold voltage of the MOS.
+- component values - values of PMOS and NMOS, Output load, Input Gate Voltage, supply voltage.
+- Node Identification and naming - Nodes are required to define the SPICE Netlist
+- Simulation commands
+- Model file - information of parameters related to transistors
+Simulation of CMOS using different width and lengths. From the waveform, irrespective of switching the shape of it are almost the same.
+
 ### Switching Threshold (Vm)
+
 In physical design, the switching threshold Vm is like a critical voltage level for a component called a CMOS inverter. It's the point at which this inverter switches between sending out a "0" or a "1" in a computer chip. This Vm is super important because it decides how well the CMOS inverter works. Now, when we want to see how this CMOS inverter behaves, we do two types of tests. First, we have the static test, where we check how it acts when everything's stable. We look at things like how fast it can send a signal, how much power it uses, and how safe it is against errors. Then, there's the dynamic test, where we see what happens when it's switching on and off. This helps us figure out how quickly it can change from "0" to "1" and back, how strong the signals are, and if there are any weird issues like sudden changes or stuck states. Both these tests are crucial in making sure CMOS inverters work well in computer chips. They help us make sure the chip does its job correctly and efficiently.
 
 ![CMOS_Inv](images/CMOS_Inverter_Robustness.png)
 
+Through transient analysis, we calculate the rise and fall delays of the CMOS by SPICE Simulation. As we know delays are calculated at 50% of the final values.
 
-### Steps to view Inverter Layout by VLSI System Design
 
+## Lab steps to git clone vsdstdcelldesign
+
+First, clone the required mag files and spicemodels of inverter,pmos and nmos sky130.
 ```
+
 git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+
 ```
+
 To view the layout of the inverter in magic :
+
 ```
+
 magic -T ./libs/sky130A.tech sky130_inv.mag &
+
 ```
+
+Ampersand at the end makes the next prompt line free, otherwise magic keeps the prompt line busy. Once we run the magic command we get the layout of the inverter in the magic window
+
+Upon running that command we would be able to see the ```CMOS Inverter``` in magic.
+
+![inverter_magic](images/Inverter-magic.png)
+
+
 
 
 [1]: ../for_developers/docker.md
