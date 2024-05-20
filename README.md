@@ -402,7 +402,7 @@ A typical standard cell characterization flow that is followed in the industry i
 7. Provide neccesary output capacitance loads
 8. Provide neccesary simulation commands
 
-Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA.![GUNA]() This software generates timing, noise, power models.
+Now all these 8 steps are fed in together as a configuration file to a characterization software called GUNA.![GUNA](images/GUNA.png) This software generates timing, noise, power models.
 These .libs are classified as Timing characterization, power characterization and noise characterization.
 
 
