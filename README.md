@@ -580,7 +580,7 @@ ext2spice
 
 The final file will be in the same folder as ~/openlane/vsdstdcelldesign/sky130_inv.spice
 
-![image](images/ext2spice_inverter)
+![image](images/ext2spice_inverter.png)
 
 
 [1]: ../for_developers/docker.md
