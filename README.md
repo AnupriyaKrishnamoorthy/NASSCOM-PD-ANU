@@ -49,7 +49,7 @@ OpenLane abstracts the underlying open source utilities, and allows users to con
 
 # OpenLane Architecture
 
-![A diagram showing the general stages of the OpenLane flow as a series of blocks](../_static/flow_v1.png)
+![A diagram showing the general stages of the OpenLane flow as a series of blocks](https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/00d41df4-30f4-45b6-8e35-d934cdb493fc)
 
 
 ## OpenLane Design Stages
