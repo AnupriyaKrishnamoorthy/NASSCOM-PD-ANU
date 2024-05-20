@@ -194,6 +194,21 @@ prep -design picorv32a
 run_synthesis
 ```
 
+To view nelist
+```
+cd /home/anupriyavsd/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_09.42.05/results/synthesis
+vim picorv32a.v
+```
+![synthesis](<img width="1360" alt="Synthesis_results_picorv32a_verilog" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/243e3857-b67a-4612-95e2-2b8a7fa087d3">)
+
+To view the report:
+```
+cd /home/anupriyavsd/OpenLane/designs/picorv32a/runs/RUN_2024.05.20_09.42.05/reports/synthesis
+vim 1-synthesis.AREA_0.stat.rpt
+```
+![report](<img width="582" alt="Synthessis_Area0_report" src="https://github.com/AnupriyaKrishnamoorthy/NASSCOM-PD-ANU/assets/30011675/35f93841-ec02-4f43-8ec6-76b452b605a3">
+)
+
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
 [4]: https://github.com/YosysHQ/yosys
