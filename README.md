@@ -704,9 +704,23 @@ The archive file drc_tests.tgz is downloaded into our user directory once extrac
 
 Now run MAGIC
 
-For better graphics use command ``magic -d XR ``
+For better graphics use command ```magic -d XR ```
 
-Now, lets see an example of simple failing set of rules of metal 1 layer.  you can either run this by magic command line `` magic -d XR met1.mag `` or from the magic console window, `` menu - file - open -load file9here, met1.mag) ``
+Now loading the ```poly``` for lab DRC challenges. 
+
+![load_poly](images/How_to_use_magic_tools_poly)
+
+Now learning about the drc rules check, we would learn about vendor drc rules and how to correct any violations. To check the drc rules,
+
+![vendor_drc_rules](images/vendor_drc_rules)
+
+And to check for the n-well drc violations we load the required file and make the changes to the drc like below
+
+![n-well-incorrect-lab](images/n-well-incorrect-lab)
+
+![nwell_tapped_drc](images/nwell_tapped_drc_l9)
+
+
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
