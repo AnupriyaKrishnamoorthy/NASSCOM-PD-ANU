@@ -582,6 +582,131 @@ The final file will be in the same folder as ~/openlane/vsdstdcelldesign/sky130_
 
 ![image](images/ext2spice_inverter.png)
 
+ext2spice commands converts the ext file to spice netlist. cthreh and rthresh are the switches to extract all the parasitic resistance and capacitance.
+
+## Create Final SPICE Deck
+
+let us see what is inside the spice Deck
+In the spice file subcircuit(subckt), pmos and nmos node connections are defined
+   
+For NMOS  ``` XO Y A VGND VGND sky130_fd_pr_nfet_01v8 ``` . The order is  ``` Cell_name Drain Gate Source Substrate model_name ``` .
+For PMOS  ``` X1 Y A VPWR VPWR sky130_fd_pr_pfet_01v8 ``` . The order is   ``` cell_name Drain Gate Source Substrate model_name ```.
+   
+For transient anaylsis, we would like to define these following connections and extra nodes for these in spice file
+  - VGND to VSS
+  - Supply voltage from VPWR to Ground - extra nodes here will be 0 and VDD with a value of 3.3v 
+  - sweep in/pulse between A pin and VGND (0)
+Before, editing the file, make sure scaling is proper, we measure the value of the gride size from the magic layout and define using `` .option scale=0.01u`` in the Deck file.
+  
+Now keeping the connection in mind, define the required commands in the file. Along with this we need to include libs for nmos ``nshort.lib`` and pmos ``pshort.lib`` and define transient analysis commands too. We comment the subckt since we are trying to input the controls and transient analysis also. Model names are changed to ``nshort_model.0`` and ``pshort_model.0`` according to the libs of nmos and pmos.
+  
+These voltage sources and simulation commands are defined in the Deck file.
+
+The extracted spice list has to be modified as shown below to use ngspice to perform simulation:
+
+```
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
+
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+//.subckt sky130_inv A Y VPWR VGND
+M1000 Y A VGND VGND nshort_model.0 w=35 l=23
++  ad=1.44n pd=0.152m as=1.37n ps=0.148m
+M1001 Y A VPWR VPWR pshort_model.0 w=37 l=23
++  ad=1.44n pd=0.152m as=1.52n ps=0.156m
+
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0V 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+
+C0 A VPWR 0.0774f
+C1 VPWR Y 0.117f
+C2 A Y 0.0754f
+C3 Y VGND 2f
+C4 A VGND 0.45f
+C5 VPWR VGND 0.781f
+//.ends
+
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+
+
+To simulate the spice netlist type the following command in the terminal:
+
+```
+
+ngspice sky130_inv.spice
+
+```
+
+
+The above command would invoke ngspice in the container and we can look at the plot using the following command.
+
+The transient response from invoking the ngspice and the spice analysis
+
+![image](ngspice_output_transient_analysis)
+
+
+To plot the wave form type
+
+```
+
+plot y vs time a
+
+```
+
+![image](images/Transient_response.png)
+
+### Standard cell characterization of CMOS Iinverter 
+ 
+Characterization of the inverter standard cell depends on four timing parameters
+ 
+
+**Rise Transition**: Time taken for the output to rise from 20% to 80% of max value
+**Fall Transition**: Time taken for the output to fall from 80% to 20% of max value
+**Cell Rise delay**: difference in time(50% output rise) to time(50% input fall)
+**Cell Fall delay**: difference in time(50% output fall) to time(50% input rise)
+
+The above timing parameters can be computed by noting down various values from the ngspice waveform.
+ 
+ ``` Rise Transition : 2.23956 - 2.18 = 0.05956 ns / 59.56ps ```
+ ``` Fall Transition : 4.09324 - 4.05059 = 0.04265ns/42.65ps ```
+ ```Cell Rise Delay : 2.20743 - 2.15034 = 0.05709ns/57.09ps ```
+ ```Cell Fall Delay : 4.07541 - 4.054986 = 0.02555ns/25.55ps ```
+
+ ### LAB exercise and DRC Challenges
+
+ ## Intrdocution of Magic and Skywater DRC's
+
+  - In-depth overview of Magic's DRC engine
+  - Introduction to Google/Skywater DRC rules
+  - Lab : Warm-up exercise : Fixing a simple rule error
+  - Lab : Main exercie : Fixing or create a complex error
+
+ # Sky130s pdk intro and Steps to download labs
+
+ - setup to view the layouts
+  - For extracting and generating views, Google/skywater repo files were built with Magic
+  - Technology file dependency is more for any layout. hence, this file is created first.
+  - Since, Pdk is still under development, there are some unfinished tech files and these are packaged for magic along with lab exercise layout and bunch of stuff into the tar ball
+ 
+We can download the packaged files from web using ``wget `` command. wget stands for web get, a non-interactive file downloader command.
+  
+  ``` wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz```
+
+The archive file drc_tests.tgz is downloaded into our user directory once extraction is done, drc_tests file is created and you will have all the information about magic layout for this lab exercise
+
+Now run MAGIC
+
+For better graphics use command ``magic -d XR ``
+
+Now, lets see an example of simple failing set of rules of metal 1 layer.  you can either run this by magic command line `` magic -d XR met1.mag `` or from the magic console window, `` menu - file - open -load file9here, met1.mag) ``
 
 [1]: ../for_developers/docker.md
 [2]: https://www.youtube.com/watch?v=MVLbb1aMk24
