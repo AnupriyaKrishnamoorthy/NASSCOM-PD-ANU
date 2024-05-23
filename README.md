@@ -650,7 +650,7 @@ The above command would invoke ngspice in the container and we can look at the p
 
 The transient response from invoking the ngspice and the spice analysis
 
-![image](ngspice_output_transient_analysis)
+![image](images/ngspice_output_transient_analysis.png)
 
 
 To plot the wave form type
@@ -708,17 +708,17 @@ For better graphics use command ```magic -d XR ```
 
 Now loading the ```poly``` for lab DRC challenges. 
 
-![load_poly](images/How_to_use_magic_tools_poly)
+![load_poly](images/How_to_use_magic_tools_poly.png)
 
 Now learning about the drc rules check, we would learn about vendor drc rules and how to correct any violations. To check the drc rules,
 
-![vendor_drc_rules](images/vendor_drc_rules)
+![vendor_drc_rules](images/vendor_drc_rules.png)
 
 And to check for the n-well drc violations we load the required file and make the changes to the drc like below
 
-![n-well-incorrect-lab](images/n-well-incorrect-lab)
+![n-well-incorrect-lab](images/n-well-incorrect-lab.png)
 
-![nwell_tapped_drc](images/nwell_tapped_drc_l9)
+![nwell_tapped_drc](images/nwell_tapped_drc_l9.png)
 
 
 
